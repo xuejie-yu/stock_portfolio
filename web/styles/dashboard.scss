@@ -1,0 +1,43 @@
+.dashboard {
+  display: block;
+  margin-left: 5%;
+  width: 90%;
+  padding: 10px;
+}
+
+#settingsDiv {
+  margin-top: 10px;
+}
+
+#overviewDiv {
+  height: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+#graphDiv {
+  display: block;
+  background-color: #141722;
+  height: 600px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1.5px 10px 3px rgb(97 48 238 / 35%);
+}
+
+#stockDetailsDiv {
+  background-color: #141722;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1.5px 10px 3px rgb(97 48 238 / 35%);
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
