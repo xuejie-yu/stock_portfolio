@@ -58,13 +58,13 @@ In order to run the app, please make sure you have [Node.js](https://nodejs.org/
 Download the repository with `git` or just simply download as `zip` file and uncompressed it. Put the app in proper place that you feel comfortable with.
 ## How to start the app
 - Step 1, Open `Terminal` from your laptop.
-- Step 2, Navigate to the root of the application. For the users without deep knowledge about `Terminal`, simply type `cd` and space. Then drag/drop the folder to the terminal, the path should be filled automatically. Then press `Enter` button. Now you should be in the folder with the display similar to `~/Downalods/stock_porfolio`.
+- Step 2, Navigate to the root of the application. For the users without deep knowledge about `Terminal`, simply type `cd` and space. Then drag/drop the folder to the terminal, the path should be filled automatically. Then press `Enter` button. Now you should be in the folder with the display similar to `~/Downalods/stock_porfolio`. Please make sure you are already in the root of the app. If you download as zip, the folder may be wrapper with one more layer.
 - Step 3, Type `npm install` to install all the dependency needed for the app. **This is required only for first time.**
 - Step 4, Type `npm run build` to build the app for your local environment. You should see the message like `info  - Generating static pages` if you have it successfully built. **This is required only for first time.**
 - Step 5, Type `npm start` to start the app. You should see the message `ready - started server on http://localhost:3000`.
 - Open the browser and type `localhost:3000`, you should be able to see the app.
 
-Step 1,2,5 are required for starting the app. Step 3,4 are only required for the first time.
+PS: Step 1,2,5 are required everytime when you want to start the app. Step 3,4 are only required for the first time.
 ## How to configure the portfolio
 Once you have the app running properly, you should see the page, like 
 ![initial page](/docs/init.png)
@@ -102,14 +102,12 @@ After stock is added, it will be displayed in the table,
 
 ![stock added](/docs/stock_added.png)
 
-The `Current Price` should be displayed properly if you have the `Settings` configured properly.
-
-If you have further transaction, click the `+` button in the graph to add more `transaction`. 
+The `Current Price` should be displayed properly if you have the `Settings` configured properly. Please do not add the same stock multiple times via "Add Stock" button. If you have further transaction for specific stock, please click the `arrow` on the left of the stock name in the table to expand the transaction history and click the `+` button in the table to add more `transaction`. 
 - For purchase, put `quantity` with positive value, e.g. `100`
 - For sell, put `quantity` with negative value, e.g. `-100`
 
 ## Performance graph configuration
-So far, you should have the stock graph without history. You can upload the historical price as CSV file to the app to have the complete overview of the performance. (So far, the app only support historical data from Yahoo Finance. It will be extended afterwards). For example, to add the performance history for gamestop,
+So far, you should have the stock graph without history. You can upload the historical price as CSV file to the app to have the complete overview of the performance. (So far, the app only support historical data from Yahoo Finance. It will be extended in the future if more user request it). For example, to add the performance history for gamestop,
 - Open the webpage https://finance.yahoo.com/quote/GME/history?p=GME, click `Download` button to get `GME.csv` locally. Please make sure the `Time Period` covers all your transaction dates so that you can have complete history
 ![yahoo download](/docs/yahoo_download.png)
 - Back to the app, Click the `Upload history` and select the file `GME.csv`. Now you should see the graph is updated with historical data. The graph shows the gain/loss over time for your stock individually.
@@ -121,8 +119,12 @@ So far, you should have the stock graph without history. You can upload the hist
 You can toggle the `Auto Refresh` button at the top of the page next to the `settings` icon to get live data every 10 seconds. 
 
 ## Change Avatar
-You can use any image to replace the default avatar,by replacing the image in `/public` folder. Please make sure the image you use have the name `img.png`.
+You can use any image to replace the default avatar,by replacing the image in `/public` folder in the app root. Please make sure the image you use have the name `img.png`.
 
 
 # Advance Usage
-The data is stored in the `/data` folder in the app. For advanced user, you can modify the files inside if needed.
+- The data is stored in the `/data` folder in the app root. For advanced user, you can modify the files inside if needed.
+- For my personal usage, I host the app on my NAS so that I have the app always running
+
+# Support
+Feel free to reach out or create PR for any requests
