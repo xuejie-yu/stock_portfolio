@@ -1,5 +1,5 @@
 import jsdom from "jsdom";
-import { toFixedFloat, getSettingFromFile }from "../utils";
+import { toFixedFloat, getSettingFromFile, getPreviousDay }from "../utils";
 
 const { JSDOM } = jsdom;
 
@@ -120,10 +120,10 @@ export default class Stock {
 
   calculateTodayGain() {
     if (this.quantity === 0 || !this.priceHistory || Object.keys(this.priceHistory).length === 0) return 0;
-    let yesterday = new Date();
-    yesterday.setUTCDate(yesterday.getUTCDate() - 1);
-    yesterday = yesterday.toISOString().substring(0, 10);
-    const prePrice = this.priceHistory[yesterday] || 0;
+    const previousDay = getPreviousDay();
+    const prePrice = this.priceHistory[previousDay] || 0;
+    console.log(prePrice)
+    console.log(this.currentPrice)
     return toFixedFloat((this.currentPrice - prePrice) * this.quantity, 2);
   }
 

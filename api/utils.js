@@ -81,12 +81,24 @@ const getSettingFromFile = () => {
   return settings;
 };
 
+const getPreviousDay = () => {
+  let previousDay = new Date();
+  if (previousDay.getDay() === 1) {
+    previousDay.setUTCDate(previousDay.getUTCDate() - 3);
+  } else {
+    previousDay.setUTCDate(previousDay.getUTCDate() - 1);
+  }
+  previousDay = previousDay.toISOString().substring(0, 10);
+  return previousDay;
+};
+
 export {
   toFixedFloat,
   updatePortfolioFile,
   getPortfolio,
   updateSettingToFile,
   getSettingFromFile,
+  getPreviousDay,
   log,
 };
 
