@@ -54,6 +54,8 @@ This app is build based on the [Nextjs](https://nextjs.org/).
 
 In order to run the app, please make sure you have [Node.js](https://nodejs.org/en/) installed on your computer. To verify that you have successfully installed the node.js, open the `Terminal` from your laptop and type `npm`. If you see the help document of `npm`, e.g. `Usage: npm <command>`, you are good. If not, please find the documentation of Nodejs installation on the Internet.
 
+The minimum version of Node.js is 12.X.
+
 ## How to download the app
 Download the repository with `git` or just simply download as `zip` file and uncompressed it. Put the app in proper place that you feel comfortable with.
 ## How to start the app

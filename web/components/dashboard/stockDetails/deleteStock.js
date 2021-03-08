@@ -5,11 +5,13 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function DeleteStock (props) {
-  const { stockIndex } = props;
+  const { stockIndex, loadBasicPortfolio } = props;
   const onDelete = () => {
     fetch(`${config.host}/api/delete_stock/${stockIndex}`, {
       method: "DELETE"
     });
+
+    loadBasicPortfolio();
   };
 
   return (

@@ -56,7 +56,7 @@ function Row(props) {
           {stock.quantity > 0 ? ((stock.totalGain / stock.totalCost) * 100).toFixed(2) + "%" : "-"}
         </TableCell>
         <TableCell align="center">
-          <DeleteStock stockIndex={stockIndex}></DeleteStock>
+          <DeleteStock stockIndex={stockIndex} loadBasicPortfolio={loadBasicPortfolio}></DeleteStock>
         </TableCell>
       </TableRow>
       <TableRow>
