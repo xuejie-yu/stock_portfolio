@@ -56,7 +56,7 @@ function Row(props) {
           {stock.quantity > 0 ? ((stock.totalGain / stock.totalCost) * 100).toFixed(2) + "%" : "-"}
         </TableCell>
         <TableCell align="center">
-          <DeleteStock stockIndex={stockIndex} loadBasicPortfolio={loadBasicPortfolio}></DeleteStock>
+          <DeleteStock stockIndex={stockIndex} stockName={stock.name} loadBasicPortfolio={loadBasicPortfolio}></DeleteStock>
         </TableCell>
       </TableRow>
       <TableRow>
@@ -89,7 +89,7 @@ function Row(props) {
                         {transaction.cost}
                       </TableCell>
                       <TableCell align="center">
-                        <DeleteTransaction symbol={stock.symbol} transactionIndex={transactionIndex} loadBasicPortfolio={loadBasicPortfolio}></DeleteTransaction>
+                        <DeleteTransaction symbol={stock.symbol} date={transaction.date} transactionIndex={transactionIndex} loadBasicPortfolio={loadBasicPortfolio}></DeleteTransaction>
                       </TableCell>
                     </TableRow>
                   ))}
