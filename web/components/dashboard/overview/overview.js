@@ -16,7 +16,7 @@ export default function Overview (props) {
           <Grid item xs={3}>
             <img className="myImage" src={MY_IMAGE}></img>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Card className="overviewCard">
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
@@ -28,7 +28,7 @@ export default function Overview (props) {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Card className="overviewCard">
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
@@ -45,7 +45,7 @@ export default function Overview (props) {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Card className="overviewCard">
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>

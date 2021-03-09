@@ -122,8 +122,6 @@ export default class Stock {
     if (this.quantity === 0 || !this.priceHistory || Object.keys(this.priceHistory).length === 0) return 0;
     const previousDay = getPreviousDay();
     const prePrice = this.priceHistory[previousDay] || 0;
-    console.log(prePrice)
-    console.log(this.currentPrice)
     return toFixedFloat((this.currentPrice - prePrice) * this.quantity, 2);
   }
 
