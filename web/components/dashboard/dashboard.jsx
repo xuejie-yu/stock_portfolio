@@ -16,6 +16,8 @@ export default function Dashboard () {
 
   const [intervalId, setIntervalId] = useState(null);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const loadBasicPortfolio = async () => {
     const res = await fetch(`${config.host}/api/portfolio`);
     const portfolio = await res.json();
@@ -24,6 +26,7 @@ export default function Dashboard () {
       stock.todayPositive = stock.todayGain > 0;
     });
     setPortfolio(portfolio);
+    setIsLoading(false);
   }
 
   const toggerSwitch = () => {
@@ -46,11 +49,11 @@ export default function Dashboard () {
           <Settings autoRefresh={autoRefresh} toggerSwitch={toggerSwitch}></Settings>
         </Grid>
         <Grid item xs={12} id="overviewDiv">
-          <Overview portfolio={portfolio}></Overview>
+          <Overview portfolio={portfolio} isLoading={isLoading}></Overview>
         </Grid>
         <Grid item xs={12} id="graphDiv">
           <div>
-            <Performance portfolio={portfolio} loadBasicPortfolio={loadBasicPortfolio}></Performance>
+            <Performance portfolio={portfolio} loadBasicPortfolio={loadBasicPortfolio} isLoading={isLoading}></Performance>
           </div>
         </Grid>
         <Grid item xs={12} id="stockDetailsDiv">
@@ -58,7 +61,7 @@ export default function Dashboard () {
             <AddStock loadBasicPortfolio={loadBasicPortfolio}></AddStock>
             <h2>Stock Details</h2>
           </div>
-          <StockTable stocks={portfolio.stocks} loadBasicPortfolio={loadBasicPortfolio}></StockTable>
+          <StockTable stocks={portfolio.stocks} loadBasicPortfolio={loadBasicPortfolio} isLoading={isLoading}></StockTable>
         </Grid>
       </Grid>
     </div>

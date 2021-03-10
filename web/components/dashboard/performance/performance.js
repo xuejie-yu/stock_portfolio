@@ -4,6 +4,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import PerformanceChart from "./charts/PerformanceChart.js"
 import UploadHistory from "./uploadHistory.js"
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function TabPanelOverviewChart(props) {
   const { value, index, portfolio } = props;
@@ -21,7 +22,7 @@ function TabPanelOverviewChart(props) {
 }
 
 export default function Performance(props) {
-  const { portfolio, loadBasicPortfolio } = props;
+  const { portfolio, loadBasicPortfolio, isLoading } = props;
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -42,15 +43,17 @@ export default function Performance(props) {
       >
         <Tab label="Overall" />
       </Tabs>
-      { hasStock && 
-        <TabPanelOverviewChart value={value} index={0} portfolio={portfolio}>
-        </TabPanelOverviewChart>
-      }
-      {
-        !hasStock && 
-        <div id="emptyPerformance">
-        <h2>No stock configured</h2>
-        </div>
+      { isLoading ?
+        (<div className="text-align-center margin-top-200">
+          <CircularProgress></CircularProgress>
+        </div>) :
+        (hasStock ?
+          (<TabPanelOverviewChart value={value} index={0} portfolio={portfolio}>
+          </TabPanelOverviewChart>) :
+          (<div id="emptyPerformance" className="margin-top-200">
+          <h2>No stock configured</h2>
+          </div>)
+        )
       }
     </div>
   );
@@ -64,5 +67,6 @@ TabPanelOverviewChart.propTypes = {
 
 Performance.propTypes = {
   portfolio: PropTypes.object,
-  loadBasicPortfolio: PropTypes.func
+  loadBasicPortfolio: PropTypes.func,
+  isLoading: PropTypes.bool
 };

@@ -16,6 +16,7 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import AddTransaction from "./addTransaction";
 import DeleteStock from "./deleteStock";
 import DeleteTransaction from "./deleteTransaction";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function Row(props) {
   const { stock, stockIndex, loadBasicPortfolio } = props;
@@ -104,40 +105,46 @@ function Row(props) {
 }
 
 export default function StockTable (props) {
-  const { stocks, loadBasicPortfolio } = props;
+  const { stocks, loadBasicPortfolio, isLoading } = props;
   return (
     <div>
-      <TableContainer component={Paper}>
-        <Table aria-label="collapsible table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center" key={"header-arrow"} />
-              <TableCell align="center" key={"header-symbol"}>Symbol</TableCell>
-              <TableCell align="center" key={"header-quantities"}>Quantity</TableCell>
-              <TableCell align="center" key={"header-totalCost"}>Total Cost</TableCell>
-              <TableCell align="center" key={"header-averagePrice"}>Average Price</TableCell>
-              <TableCell align="center" key={"header-currentPrice"}>Current Price</TableCell>
-              <TableCell align="center" key={"header-todayGain"}>Todays&#39; Gain / Loss</TableCell>
-              <TableCell align="center" key={"header-todayGainPercentage"}>Todays&#39; Gain / Loss (%) </TableCell>
-              <TableCell align="center" key={"header-totalGain"}>Total Gain / Loss</TableCell>
-              <TableCell align="center" key={"header-totalGainPercentage"}>Total Gain / Loss (%) </TableCell>
-              <TableCell align="center" key={"header-delete"}></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {stocks && stocks.map((stock, idx) => (
-              <Row key={stock.name} stock={stock} stockIndex={idx} loadBasicPortfolio={loadBasicPortfolio}/>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      { isLoading ?
+        (<div className="text-align-center margin-top-10">
+          <CircularProgress></CircularProgress>
+        </div>) :
+        (<TableContainer component={Paper}>
+          <Table aria-label="collapsible table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" key={"header-arrow"} />
+                <TableCell align="center" key={"header-symbol"}>Symbol</TableCell>
+                <TableCell align="center" key={"header-quantities"}>Quantity</TableCell>
+                <TableCell align="center" key={"header-totalCost"}>Total Cost</TableCell>
+                <TableCell align="center" key={"header-averagePrice"}>Average Price</TableCell>
+                <TableCell align="center" key={"header-currentPrice"}>Current Price</TableCell>
+                <TableCell align="center" key={"header-todayGain"}>Todays&#39; Gain / Loss</TableCell>
+                <TableCell align="center" key={"header-todayGainPercentage"}>Todays&#39; Gain / Loss (%) </TableCell>
+                <TableCell align="center" key={"header-totalGain"}>Total Gain / Loss</TableCell>
+                <TableCell align="center" key={"header-totalGainPercentage"}>Total Gain / Loss (%) </TableCell>
+                <TableCell align="center" key={"header-delete"}></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {stocks && stocks.map((stock, idx) => (
+                <Row key={stock.name} stock={stock} stockIndex={idx} loadBasicPortfolio={loadBasicPortfolio}/>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>)
+      }
     </div>
   );
 }
 
 StockTable.propTypes = {
   stocks: PropTypes.array,
-  loadBasicPortfolio: PropTypes.func
+  loadBasicPortfolio: PropTypes.func,
+  isLoading: PropTypes.bool
 };
 
 Row.propTypes = {
