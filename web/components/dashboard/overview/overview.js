@@ -21,15 +21,21 @@ export default function Overview (props) {
             <Card className="overviewCard">
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
-                  Total Investment
+                  Total Value (Total Investment)
                 </Typography>
                 { isLoading ? 
                 (<div className="text-align-center">
                   <CircularProgress></CircularProgress>
                 </div>) :
-                (<Typography variant="h3" component="h3" className="center">
-                  {portfolio.totalInvestment || 0}
-                </Typography>)}
+                ( <div>
+                    <Typography variant="h3" component="h3" className="center">
+                      {portfolio.totalValue || 0}
+                    </Typography>
+                    <Typography variant="h6" component="h3" className="center">
+                      ({portfolio.totalInvestment || 0})
+                    </Typography>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </Grid>

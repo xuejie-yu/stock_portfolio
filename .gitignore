@@ -7,6 +7,12 @@
 /.next/
 /out/
 
+# vsc
+.vscode
+
+#data
+/data
+
 # production
 /build
 

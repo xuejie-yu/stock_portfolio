@@ -7,6 +7,7 @@ export default class Portfolio {
     this.totalInvestment = this.calculateTotalInvestment({ stocks });
     this.totalGain = this.calculateTotalGain({ stocks });
     this.todayGain = this.calculateTodayGain({ stocks });
+    this.totalValue = this.calculateTotalValue();
   }
 
   calculateTotalInvestment({ stocks }) {
@@ -34,5 +35,9 @@ export default class Portfolio {
       total += stock.todayGain;
     });
     return toFixedFloat(total, 2);
+  }
+
+  calculateTotalValue() {
+    return this.totalInvestment + this.totalGain;
   }
 }
