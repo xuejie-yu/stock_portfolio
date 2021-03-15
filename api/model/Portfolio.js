@@ -1,9 +1,9 @@
 import { toFixedFloat }from "../utils";
 
 export default class Portfolio {
-  constructor({ name, stocks }) {
+  constructor({ name = "", stocks = [] }) {
     this.name = name;
-    this.stocks = stocks || [];
+    this.stocks = this.moveSoldStockToEnd({ stocks }) || [];
     this.totalInvestment = this.calculateTotalInvestment({ stocks });
     this.totalGain = this.calculateTotalGain({ stocks });
     this.todayGain = this.calculateTodayGain({ stocks });
@@ -39,5 +39,18 @@ export default class Portfolio {
 
   calculateTotalValue() {
     return this.totalInvestment + this.totalGain;
+  }
+
+  moveSoldStockToEnd ({ stocks }) {
+    const activeStock = [];
+    const soldStock = [];
+    for(let i = 0; i < stocks.length; i++) {
+      if (stocks[i].quantity === 0) {
+        soldStock.push(stocks[i]);
+      } else {
+        activeStock.push(stocks[i]);
+      }
+    }
+    return [...activeStock, ...soldStock];
   }
 }
