@@ -38,7 +38,7 @@ export default class Portfolio {
   }
 
   calculateTotalValue() {
-    return this.totalInvestment + this.totalGain;
+    return toFixedFloat(this.totalInvestment + this.totalGain, 2);
   }
 
   moveSoldStockToEnd ({ stocks }) {
