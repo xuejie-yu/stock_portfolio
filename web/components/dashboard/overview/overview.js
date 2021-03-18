@@ -53,9 +53,9 @@ export default function Overview (props) {
                     <Typography variant="h3" component="h3" className={`center ${portfolio.totalGain > 0 ? "positive" : "negative"}`}>
                       {portfolio.totalGain || 0}
                     </Typography>
-                    { portfolio.totalGain !== undefined && portfolio.totalGain > 0 && portfolio.totalInvestment > 0 &&
+                    { portfolio.totalGain !== undefined &&
                       <Typography variant="h6" component="h3" className={`center ${portfolio.totalGain > 0 ? "positive" : "negative"}`}>
-                        ({(portfolio.totalGain / portfolio.totalInvestment * 100).toFixed(2) + "%"})
+                        ({portfolio.totalInvestment !== 0 ? (portfolio.totalGain / portfolio.totalInvestment * 100).toFixed(2) + "%" : "0 %"})
                       </Typography>
                     }
                   </div>)
@@ -77,9 +77,9 @@ export default function Overview (props) {
                     <Typography variant="h3" component="h3" className={`center ${portfolio.todayGain > 0 ? "positive" : "negative"}`}>
                       {portfolio.todayGain || 0}
                     </Typography>
-                    { portfolio.todayGain !== undefined && portfolio.todayGain > 0 && portfolio.totalInvestment > 0 && 
+                    { portfolio.todayGain !== undefined && 
                       <Typography variant="h6" component="h3" className={`center ${portfolio.todayGain > 0 ? "positive" : "negative"}`}>
-                        ({(portfolio.todayGain / portfolio.totalInvestment * 100).toFixed(2) + "%"})
+                        ({portfolio.totalInvestment !== 0 ? (portfolio.todayGain / portfolio.totalInvestment * 100).toFixed(2) + "%" : "0 %"})
                       </Typography>
                     }
                   </div>)
